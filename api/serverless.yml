@@ -9,6 +9,7 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
+  variables: ${file(./config.yml)}
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true

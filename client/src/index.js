@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
+//import { BrowserRouter as Router } from "react-router-dom";
+import 'semantic-ui-css/semantic.min.css';
 import Amplify from "aws-amplify";
+import * as log from 'loglevel';
 
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 
 import './index.css';
-import App from './App';
+//import App from './App';
+import RootRouter from './components/Routers/RootRouter';
 import registerServiceWorker from './registerServiceWorker';
 import config from "./config";
 
+log.setLevel(config.logLevel);
 
 Amplify.configure({
     Auth: {
@@ -40,9 +44,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-        <App />
-    </Router>
+        <RootRouter />
   </Provider>,
   document.getElementById('root')
 );
